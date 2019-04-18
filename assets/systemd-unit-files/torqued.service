@@ -1,0 +1,14 @@
+[Unit]
+Description=Torque Full Node
+After=network.target
+
+[Service]
+User=torqueservices
+Group=torqueservices
+WorkingDirectory=/opt/torque-data-dir
+Type=simple
+LimitNOFILE=65535
+ExecStart=/usr/bin/torqued --log-file /var/log/torqued.log --data-dir /opt/torque-data-dir --non-interactive
+Restart=always
+[Install]
+WantedBy=multi-user.target

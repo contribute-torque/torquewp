@@ -1,0 +1,14 @@
+[Unit]
+Description=Torque Wallet RPC
+After=network.target torqued.service
+
+[Service]
+User=torqueservices
+Group=torqueservices
+WorkingDirectory=/opt/torque-wallets
+Type=simple
+ExecStart=/opt/torque-bin/torque-wallet-rpc --wallet-file /opt/torque-wallets/woocommerce --rpc-bind-port 20188 --password-file /opt/torque-wallets/woocommerce.password --disable-rpc-login --log-file /var/log/torque-wallet.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
